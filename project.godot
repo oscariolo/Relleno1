@@ -14,3 +14,9 @@ config/name="TestAreaForward+"
 run/main_scene="uid://pk0flrutan3u"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Walls"
+2d_physics/layer_8="VanishDetection"

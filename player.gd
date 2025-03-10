@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 3500
 const JUMP_VELOCITY = -400.0
+signal player_occluded(tile:TileMapLayer,occluded:bool)
+var current_floor = 1
 
 
 func _physics_process(delta: float) -> void:
@@ -19,5 +21,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_floor_2_top_detection_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
+func _on_view_detection_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Floor"):
+		player_occluded.emit(body,true)
+
+
+func _on_view_detection_area_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Floor"):
+		player_occluded.emit(body,false)
