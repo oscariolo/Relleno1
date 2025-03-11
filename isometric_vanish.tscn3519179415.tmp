@@ -174,11 +174,6 @@ tile_set = SubResource("TileSet_45x5b")
 collision_enabled = false
 script = ExtResource("3_ody8a")
 
-[node name="Area2D" type="Area2D" parent="Map/Floors/Floor1"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor1/Area2D"]
-polygon = PackedVector2Array(-160, -13, 20, -121, 220, -1, 40, 106)
-
 [node name="Floor2" type="TileMapLayer" parent="Map/Floors" groups=["Floor"]]
 z_index = 1
 y_sort_enabled = true

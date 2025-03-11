@@ -5,15 +5,6 @@ var going_down = false
 signal player_up
 signal player_down
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_stair_area_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
@@ -22,9 +13,6 @@ func _on_stair_area_body_entered(body: Node2D) -> void:
 		if body.global_position.y <= $StairArea/UpperStep.global_position.y: #top area nothing changes
 			print("going down")
 			return
-		
-		
-
 
 func _on_stair_area_body_exited(body: Node2D) -> void:
 	if body is CharacterBody2D:
