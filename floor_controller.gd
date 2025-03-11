@@ -1,6 +1,5 @@
 extends Node
 @export var player:CharacterBody2D
-@export var player_visibility_area:Area2D
 @export var floors:Node2D
 @export var current_player_floor = 1
 var floors_covering_view = 0
@@ -12,29 +11,38 @@ const VANISH_SPEED:= 0.5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	default()
-	player_visibility_area.connect("area_entered",_on_player_visibility_area_entered)
-	player_visibility_area.connect("area_exited",_on_player_visibility_area_exited)
+	connect_areas()
 	set_player_floor(current_player_floor)
 	
 
+func connect_areas():
+	for f in floors.get_children():
+		var visibility_area = f.get_child(0)
+		visibility_area.connect("area_entered",_on_player_visibility_area_entered)
+		visibility_area.connect("area_exited",_on_player_visibility_area_exited)
+		
+
 func default():
 	for f in floors.get_children():
-		f.get_child(1).set_collision_layer_value(2,false)
+		f.get_child(1).set_collision_layer_value(2,false)#stop being a collision
+		f.get_child(0).set_collision_mask_value(1,false) #do not detect player
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _on_player_visibility_area_entered(area:Area2D):
-	floors_covering_view +=1
-	_occlude_top_floors(true)
+	if area.get_parent() is CharacterBody2D:
+		floors_covering_view +=1
+		_occlude_top_floors(true)
 
 func _on_player_visibility_area_exited(area:Area2D):
-	floors_covering_view -=1
-	if floors_covering_view == 0:
-		_occlude_top_floors(false)
-	if floors_covering_view < 0:
-		printerr("Error, collisions less than detected????")
+	if area.get_parent() is CharacterBody2D:
+		floors_covering_view -=1
+		if floors_covering_view == 0:
+			_occlude_top_floors(false)
+		if floors_covering_view < 0:
+			printerr("Error, collisions less than detected????")
 
 
 func _occlude_top_floors(occluded:bool):
@@ -68,11 +76,11 @@ func set_occlussion_area_detections():
 	
 	for f in top_floors:
 		var visibility_detection = f.get_child(0) as Area2D
-		visibility_detection.set_collision_layer_value(8,true)
+		visibility_detection.set_collision_mask_value(1,true)
 	
 	for f in bottom_floors:
 		var visibility_detection = f.get_child(0) as Area2D
-		visibility_detection.set_collision_layer_value(8,false)
+		visibility_detection.set_collision_mask_value(1,false)
 
 func set_floor_collision(last_floor_pos:=1): #sets the collision accordingly the current one
 	#only the floor that the player is currently in must have enabled its collisions
@@ -80,7 +88,6 @@ func set_floor_collision(last_floor_pos:=1): #sets the collision accordingly the
 	var collisions = last_floor.get_child(1) as StaticBody2D
 	collisions.set_collision_layer_value(2,false)
 	
-	print(last_floor_pos)
 	var floor_collision = floors.get_child(current_player_floor-1)
 	collisions = floor_collision.get_child(1) as StaticBody2D
 	collisions.set_collision_layer_value(2,true)

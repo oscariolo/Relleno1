@@ -1,12 +1,10 @@
-[gd_scene load_steps=37 format=4 uid="uid://m3vka8fmyphy"]
+[gd_scene load_steps=36 format=4 uid="uid://m3vka8fmyphy"]
 
 [ext_resource type="Texture2D" uid="uid://b12venbjkws3j" path="res://assets/assets_pixel_50x50/isometric_pixel_0000.png" id="1_2gfw4"]
 [ext_resource type="Texture2D" uid="uid://cy27py8m2nt3x" path="res://assets/assets_pixel_50x50/isometric_pixel_0001.png" id="2_swtyp"]
 [ext_resource type="Script" uid="uid://bvnjr5ilrm0gp" path="res://floor_controller.gd" id="2_vhgvi"]
-[ext_resource type="Texture2D" uid="uid://0mmqerend2wx" path="res://icon.svg" id="4_mosqk"]
-[ext_resource type="Script" uid="uid://dietmiya0t3xb" path="res://player.gd" id="4_vpp03"]
+[ext_resource type="PackedScene" uid="uid://cfcel1esgdpl2" path="res://player.tscn" id="6_ody8a"]
 [ext_resource type="Texture2D" uid="uid://bp3dn845cme8g" path="res://assets/assets_pixel_50x50/isometric_pixel_0003.png" id="7_ectm2"]
-[ext_resource type="Script" uid="uid://b0gbh2s4hlrpq" path="res://stairs_transitions.gd" id="8_7sn56"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_swtyp"]
 texture = ExtResource("1_2gfw4")
@@ -137,14 +135,21 @@ tile_offset_axis = 1
 tile_size = Vector2i(40, 24)
 sources/0 = SubResource("TileSetAtlasSource_7sn56")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ody8a"]
-custom_solver_bias = 1.0
-radius = 6.0
-height = 16.0
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dy2ii"]
+load_path = "res://.godot/imported/isometric_pixel_0004.png-65786e7670d8e6400c5efed0f0cfd24a.ctex"
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ectm2"]
-radius = 6.0
-height = 16.0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdwla"]
+texture = SubResource("CompressedTexture2D_dy2ii")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -12)
+
+[sub_resource type="TileSet" id="TileSet_bnox2"]
+tile_shape = 1
+tile_layout = 5
+tile_offset_axis = 1
+tile_size = Vector2i(40, 24)
+sources/1 = SubResource("TileSetAtlasSource_hdwla")
 
 [node name="IsometricVanish" type="Node2D"]
 y_sort_enabled = true
@@ -152,27 +157,10 @@ y_sort_enabled = true
 [node name="Map" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="FloorController" type="Node" parent="Map" node_paths=PackedStringArray("player", "player_visibility_area", "floors")]
+[node name="FloorController" type="Node" parent="Map" node_paths=PackedStringArray("player", "floors")]
 script = ExtResource("2_vhgvi")
 player = NodePath("../Player")
-player_visibility_area = NodePath("../Player/ViewDetectionArea")
 floors = NodePath("../Floors")
-
-[node name="StairsTransitions" type="Node2D" parent="Map"]
-z_index = 1
-script = ExtResource("8_7sn56")
-
-[node name="StairArea" type="Area2D" parent="Map/StairsTransitions"]
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Map/StairsTransitions/StairArea"]
-position = Vector2(60, 0)
-polygon = PackedVector2Array(-21, -36, -1, 0, -19, 11, -39, -25)
-
-[node name="LowerStep" type="Marker2D" parent="Map/StairsTransitions/StairArea"]
-position = Vector2(50, 6)
-
-[node name="UpperStep" type="Marker2D" parent="Map/StairsTransitions/StairArea"]
-position = Vector2(29, -29)
 
 [node name="Floors" type="Node2D" parent="Map"]
 
@@ -183,6 +171,7 @@ tile_set = SubResource("TileSet_45x5b")
 collision_enabled = false
 
 [node name="VisibilityArea" type="Area2D" parent="Map/Floors/Floor1"]
+collision_layer = 128
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor1/VisibilityArea"]
 polygon = PackedVector2Array(-160, -13, 20, -121, 220, -1, 40, 106)
@@ -233,7 +222,6 @@ tile_set = SubResource("TileSet_mosqk")
 
 [node name="VisibilityArea" type="Area2D" parent="Map/Floors/Floor2"]
 collision_layer = 128
-collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor2/VisibilityArea"]
 polygon = PackedVector2Array(-40, -38, -79, -60, -21, -94, 40, -61, 22, -49, 60, -25, 40, -13, -20, -47)
@@ -302,48 +290,39 @@ debug_color = Color(0, 0, 0, 1)
 z_index = 2
 y_sort_enabled = true
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD7//3/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD7//3/AAAAAAAAAAD7//z/AAAAAAAAAAD7//v/AAAAAAAAAAD7//r/AAAAAAAAAAD8//r/AAAAAAAAAAD8//v/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_vhgvi")
 
 [node name="VisbilityAera" type="Area2D" parent="Map/Floors/Floor3"]
 collision_layer = 128
-collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor3/VisbilityAera"]
-polygon = PackedVector2Array(-39, -84, -20, -72, 0, -85, -21, -96)
+polygon = PackedVector2Array(-39, -84, -20, -72, 19, -72, 39, -62, 82, -84, 80, -109, 40, -132)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Map/Floors/Floor3"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor3/StaticBody2D"]
-polygon = PackedVector2Array(-40, -84, -20, -73, 0, -84, -21, -96)
+build_mode = 1
+polygon = PackedVector2Array(-40, -84, -20, -73, 20, -96, 40, -86, 80, -109, 41, -134)
 
-[node name="Player" type="CharacterBody2D" parent="Map"]
-z_index = 1
+[node name="Floor4" type="TileMapLayer" parent="Map/Floors" groups=["Floor"]]
+z_index = 2
 y_sort_enabled = true
-position = Vector2(63, -47)
-collision_mask = 158
-wall_min_slide_angle = 3.14159
-floor_max_angle = 3.14159
-script = ExtResource("4_vpp03")
-metadata/_edit_group_ = true
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD6//3/AQAAAAAAAAD6//7/AQAAAAAAAAD6////AQAAAAAAAAD6/wAAAQAAAAAAAAD6/wEAAQAAAAAAAAD6/wIAAQAAAAAAAAD7/wIAAQAAAAAAAAD7/wEAAQAAAAAAAAD7/wAAAQAAAAAAAAD7////AQAAAAAAAAD7//7/AQAAAAAAAAD7//3/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_bnox2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Map/Player"]
-scale = Vector2(0.14, 0.14)
-texture = ExtResource("4_mosqk")
+[node name="VisbilityAera" type="Area2D" parent="Map/Floors/Floor4"]
+collision_layer = 128
 
-[node name="Camera2D" type="Camera2D" parent="Map/Player"]
-zoom = Vector2(3.75, 3.75)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor4/VisbilityAera"]
+polygon = PackedVector2Array(-160, -35, -120, -12, 0, -85, -41, -107)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Player"]
-shape = SubResource("CapsuleShape2D_ody8a")
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/Floors/Floor4"]
 
-[node name="ViewDetectionArea" type="Area2D" parent="Map/Player"]
-collision_mask = 128
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor4/StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-120, -10, -1, -85, -41, -107, -160, -35)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Player/ViewDetectionArea"]
-shape = SubResource("CapsuleShape2D_ectm2")
-
-[connection signal="player_down" from="Map/StairsTransitions" to="Map" method="_on_stairs_transitions_player_down"]
-[connection signal="player_up" from="Map/StairsTransitions" to="Map" method="_on_stairs_transitions_player_up"]
-[connection signal="body_entered" from="Map/StairsTransitions/StairArea" to="Map/StairsTransitions" method="_on_stair_area_body_entered"]
-[connection signal="body_exited" from="Map/StairsTransitions/StairArea" to="Map/StairsTransitions" method="_on_stair_area_body_exited"]
+[node name="Player" parent="Map" instance=ExtResource("6_ody8a")]
+position = Vector2(73, -51)

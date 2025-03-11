@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfcel1esgdpl2"]
+
+[ext_resource type="Script" uid="uid://dietmiya0t3xb" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://0mmqerend2wx" path="res://icon.svg" id="2_i3pqv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ody8a"]
+custom_solver_bias = 1.0
+radius = 6.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
+radius = 6.0
+height = 16.0
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
+collision_mask = 158
+wall_min_slide_angle = 3.14159
+floor_max_angle = 3.14159
+script = ExtResource("1_onrkg")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("2_i3pqv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.75, 3.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ody8a")
+
+[node name="VisibilityArea" type="Area2D" parent="."]
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibilityArea"]
+shape = SubResource("CapsuleShape2D_onrkg")
