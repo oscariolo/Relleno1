@@ -11,10 +11,15 @@ const VANISH_SPEED:= 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	default()
 	player_visibility_area.connect("area_entered",_on_player_visibility_area_entered)
 	player_visibility_area.connect("area_exited",_on_player_visibility_area_exited)
-	set_occlussion_area_detections()
+	set_player_floor(current_player_floor)
+	
 
+func default():
+	for f in floors.get_children():
+		f.get_child(1).set_collision_layer_value(2,false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -51,17 +56,32 @@ func get_bottom_floors()->Array:
 	return floors_list
 
 func set_player_floor(current_floor:int):
+	var last_floor = current_player_floor
 	current_player_floor = current_floor
-	set_occlussion_area_detections() 
+	player.z_index = current_player_floor+1
+	set_occlussion_area_detections()
+	set_floor_collision(last_floor)
 
 func set_occlussion_area_detections():
 	var top_floors = get_top_floors()
 	var bottom_floors = get_bottom_floors()
 	
-	for f:TileMapLayer in top_floors:
+	for f in top_floors:
 		var visibility_detection = f.get_child(0) as Area2D
 		visibility_detection.set_collision_layer_value(8,true)
 	
-	for f:TileMapLayer in bottom_floors:
+	for f in bottom_floors:
 		var visibility_detection = f.get_child(0) as Area2D
 		visibility_detection.set_collision_layer_value(8,false)
+
+func set_floor_collision(last_floor_pos:=1): #sets the collision accordingly the current one
+	#only the floor that the player is currently in must have enabled its collisions
+	var last_floor = floors.get_child(last_floor_pos-1)
+	var collisions = last_floor.get_child(1) as StaticBody2D
+	collisions.set_collision_layer_value(2,false)
+	
+	print(last_floor_pos)
+	var floor_collision = floors.get_child(current_player_floor-1)
+	collisions = floor_collision.get_child(1) as StaticBody2D
+	collisions.set_collision_layer_value(2,true)
+	

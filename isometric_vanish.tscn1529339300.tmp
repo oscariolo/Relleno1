@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://m3vka8fmyphy"]
+[gd_scene load_steps=38 format=4 uid="uid://m3vka8fmyphy"]
 
 [ext_resource type="Texture2D" uid="uid://b12venbjkws3j" path="res://assets/assets_pixel_50x50/isometric_pixel_0000.png" id="1_2gfw4"]
 [ext_resource type="Texture2D" uid="uid://cy27py8m2nt3x" path="res://assets/assets_pixel_50x50/isometric_pixel_0001.png" id="2_swtyp"]
@@ -50,10 +50,14 @@ b = Vector2(20, -25)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_p52rg"]
 a = Vector2(41, -37)
-b = Vector2(-21, -73)
+b = Vector2(0, -61)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_icqfb"]
+a = Vector2(-21, -48)
+b = Vector2(0, -61)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_o5dpe"]
-a = Vector2(-1, -84)
+a = Vector2(-21, -48)
 b = Vector2(-41, -60)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_45x5b"]
@@ -73,7 +77,7 @@ custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_45x5b")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ectm2"]
-a = Vector2(-21, -48)
+a = Vector2(-20, -48)
 b = Vector2(20, -24)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_vfwd4"]
@@ -122,7 +126,7 @@ b = Vector2(42, -61)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wukuw"]
 a = Vector2(23, -48)
-b = Vector2(41, -37)
+b = Vector2(41, -36)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7sn56"]
 texture = ExtResource("7_ectm2")
@@ -157,22 +161,7 @@ script = ExtResource("2_vhgvi")
 player = NodePath("../Player")
 player_visibility_area = NodePath("../Player/ViewDetectionArea")
 floors = NodePath("../Floors")
-
-[node name="StairsTransitions" type="Node2D" parent="Map"]
-z_index = 1
-script = ExtResource("8_7sn56")
-
-[node name="StairArea" type="Area2D" parent="Map/StairsTransitions"]
-
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Map/StairsTransitions/StairArea"]
-position = Vector2(60, 0)
-polygon = PackedVector2Array(-21, -36, -1, 0, -19, 11, -39, -25)
-
-[node name="LowerStep" type="Marker2D" parent="Map/StairsTransitions/StairArea"]
-position = Vector2(50, 6)
-
-[node name="UpperStep" type="Marker2D" parent="Map/StairsTransitions/StairArea"]
-position = Vector2(29, -29)
+current_player_floor = 2
 
 [node name="Floors" type="Node2D" parent="Map"]
 
@@ -219,6 +208,10 @@ debug_color = Color(0, 0, 0, 1)
 shape = SubResource("SegmentShape2D_p52rg")
 debug_color = Color(0, 0, 0, 1)
 
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
+shape = SubResource("SegmentShape2D_icqfb")
+debug_color = Color(0, 0, 0, 1)
+
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
 position = Vector2(-19, 11)
 shape = SubResource("SegmentShape2D_o5dpe")
@@ -228,7 +221,7 @@ debug_color = Color(0, 0, 0, 1)
 z_index = 1
 y_sort_enabled = true
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD///7/AQAAAAAAAAD8//3/AQAAAAAAAAD7////AQAAAAAAAAD+//7/AQAAAAAAAAD9//7/AQAAAAAAAAD9//3/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD7//7/AQAAAAAAAAD7//3/AQAAAAAAAAAAAPv/AQAAAAAAAAABAPz/AQAAAAAAAAABAPv/AQAAAAAAAAACAPv/AQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD///7/AQAAAAAAAAD8//3/AQAAAAAAAAD7////AQAAAAAAAAD+//7/AQAAAAAAAAD9//7/AQAAAAAAAAD9//3/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD7//7/AQAAAAAAAAD7//3/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_mosqk")
 
 [node name="VisibilityArea" type="Area2D" parent="Map/Floors/Floor2"]
@@ -282,7 +275,6 @@ shape = SubResource("SegmentShape2D_ayrq3")
 debug_color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
-position = Vector2(-1, 0)
 shape = SubResource("SegmentShape2D_vk4ld")
 debug_color = Color(0, 0, 0, 1)
 
@@ -312,15 +304,26 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor3/VisbilityAera"]
 polygon = PackedVector2Array(-39, -84, -20, -72, 0, -85, -21, -96)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Map/Floors/Floor3"]
+[node name="StairsTransitions" type="Node2D" parent="Map/Floors"]
+z_index = 1
+script = ExtResource("8_7sn56")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor3/StaticBody2D"]
-polygon = PackedVector2Array(-40, -84, -20, -73, 0, -84, -21, -96)
+[node name="StairArea" type="Area2D" parent="Map/Floors/StairsTransitions"]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Map/Floors/StairsTransitions/StairArea"]
+position = Vector2(60, 0)
+polygon = PackedVector2Array(-21, -36, -1, 0, -19, 11, -39, -25)
+
+[node name="LowerStep" type="Marker2D" parent="Map/Floors/StairsTransitions/StairArea"]
+position = Vector2(50, 6)
+
+[node name="UpperStep" type="Marker2D" parent="Map/Floors/StairsTransitions/StairArea"]
+position = Vector2(29, -29)
 
 [node name="Player" type="CharacterBody2D" parent="Map"]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(63, -47)
+position = Vector2(77, -38)
 collision_mask = 158
 wall_min_slide_angle = 3.14159
 floor_max_angle = 3.14159
@@ -343,7 +346,7 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Player/ViewDetectionArea"]
 shape = SubResource("CapsuleShape2D_ectm2")
 
-[connection signal="player_down" from="Map/StairsTransitions" to="Map" method="_on_stairs_transitions_player_down"]
-[connection signal="player_up" from="Map/StairsTransitions" to="Map" method="_on_stairs_transitions_player_up"]
-[connection signal="body_entered" from="Map/StairsTransitions/StairArea" to="Map/StairsTransitions" method="_on_stair_area_body_entered"]
-[connection signal="body_exited" from="Map/StairsTransitions/StairArea" to="Map/StairsTransitions" method="_on_stair_area_body_exited"]
+[connection signal="player_down" from="Map/Floors/StairsTransitions" to="Map" method="_on_stairs_transitions_player_down"]
+[connection signal="player_up" from="Map/Floors/StairsTransitions" to="Map" method="_on_stairs_transitions_player_up"]
+[connection signal="body_entered" from="Map/Floors/StairsTransitions/StairArea" to="Map/Floors/StairsTransitions" method="_on_stair_area_body_entered"]
+[connection signal="body_exited" from="Map/Floors/StairsTransitions/StairArea" to="Map/Floors/StairsTransitions" method="_on_stair_area_body_exited"]
