@@ -23,8 +23,9 @@ func connect_areas():
 		
 
 func default():
+	#all collisions and detections are deactivated by default, on ready set_player_floor will start on the current floor given in export
 	for f in floors.get_children():
-		f.get_child(1).set_collision_layer_value(2,false)#stop being a collision
+		f.get_child(1).set_collision_layer_value(2,false)#stop colliding with player
 		f.get_child(0).set_collision_mask_value(1,false) #do not detect player
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
