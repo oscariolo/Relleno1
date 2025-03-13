@@ -220,8 +220,8 @@ radius = 4.0
 height = 10.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
-radius = 6.0
-height = 16.0
+radius = 4.0
+height = 10.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1

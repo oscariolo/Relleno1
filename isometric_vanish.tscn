@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://m3vka8fmyphy"]
+[gd_scene load_steps=53 format=4 uid="uid://m3vka8fmyphy"]
 
 [ext_resource type="Texture2D" uid="uid://b12venbjkws3j" path="res://assets/assets_pixel_50x50/isometric_pixel_0000.png" id="1_2gfw4"]
 [ext_resource type="Texture2D" uid="uid://cy27py8m2nt3x" path="res://assets/assets_pixel_50x50/isometric_pixel_0001.png" id="2_swtyp"]
@@ -38,8 +38,8 @@ a = Vector2(122, 10)
 b = Vector2(102, -2)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pe12j"]
-a = Vector2(-20, -24)
-b = Vector2(-40, -13)
+a = Vector2(-19, 0)
+b = Vector2(0, -11)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_wukuw"]
 a = Vector2(44, 14)
@@ -47,7 +47,7 @@ b = Vector2(39, -14)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_dy2ii"]
 a = Vector2(-81, -37)
-b = Vector2(-40, -13)
+b = Vector2(-19, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hdwla"]
 a = Vector2(-81, -37)
@@ -58,12 +58,28 @@ a = Vector2(41, -38)
 b = Vector2(-19, -73)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hknpb"]
-a = Vector2(41, -38)
+a = Vector2(40, -38)
+b = Vector2(19, -24)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2dfcm"]
+a = Vector2(59, -1)
 b = Vector2(19, -24)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_p52rg"]
-a = Vector2(59, -1)
-b = Vector2(19, -24)
+a = Vector2(120, -37)
+b = Vector2(98, -25)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_yrgax"]
+a = Vector2(120, -37)
+b = Vector2(180, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i80be"]
+a = Vector2(161, 12)
+b = Vector2(180, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_o83ba"]
+a = Vector2(117, -13)
+b = Vector2(98, -25)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ectm2"]
 texture = ExtResource("6_7sn56")
@@ -193,12 +209,12 @@ tile_size = Vector2i(40, 24)
 sources/1 = SubResource("TileSetAtlasSource_hdwla")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ayrq3"]
-a = Vector2(13, 11)
-b = Vector2(34, 24)
+a = Vector2(15, 12)
+b = Vector2(31, 20)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_vk4ld"]
-a = Vector2(3, -1)
-b = Vector2(-19, 12)
+a = Vector2(0, 1)
+b = Vector2(-16, 10)
 
 [node name="IsometricVanish" type="Node2D"]
 y_sort_enabled = true
@@ -229,14 +245,14 @@ polygon = PackedVector2Array(-160, -13, 20, -121, 220, -1, 40, 106)
 top_level = true
 collision_layer = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor1/Floor1Collisions"]
-build_mode = 1
-polygon = PackedVector2Array(99, -1, 118, -12, 99, -25, 120, -37, 180, 0, 161, 12, 140, 0, 121, 12)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
 shape = SubResource("SegmentShape2D_vhgvi")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
+shape = SubResource("SegmentShape2D_co6ke")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
+position = Vector2(-19, -13)
 shape = SubResource("SegmentShape2D_co6ke")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
@@ -261,8 +277,20 @@ shape = SubResource("SegmentShape2D_bnox2")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
 shape = SubResource("SegmentShape2D_hknpb")
 
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
+shape = SubResource("SegmentShape2D_2dfcm")
+
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
 shape = SubResource("SegmentShape2D_p52rg")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
+shape = SubResource("SegmentShape2D_yrgax")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
+shape = SubResource("SegmentShape2D_i80be")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
+shape = SubResource("SegmentShape2D_o83ba")
 
 [node name="Floor2" type="TileMapLayer" parent="Map/Floors" groups=["Floor"]]
 z_index = 1
@@ -382,11 +410,7 @@ script = ExtResource("6_ectm2")
 [node name="TransitioningStairs" type="Area2D" parent="Map/StairsChange"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/StairsChange/TransitioningStairs"]
-position = Vector2(62, 1)
-shape = SubResource("SegmentShape2D_ayrq3")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/StairsChange/TransitioningStairs"]
-position = Vector2(62, 1)
+position = Vector2(62, 2)
 shape = SubResource("SegmentShape2D_ayrq3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/StairsChange/TransitioningStairs"]
@@ -394,7 +418,7 @@ position = Vector2(62, 1)
 shape = SubResource("SegmentShape2D_vk4ld")
 
 [node name="Player" parent="Map" instance=ExtResource("6_ody8a")]
-position = Vector2(5, 21)
+position = Vector2(64, 22)
 
 [connection signal="body_entered" from="Map/StairsChange/TransitioningStairs" to="Map/StairsChange" method="_on_transitioning_stairs_body_entered"]
 [connection signal="body_exited" from="Map/StairsChange/TransitioningStairs" to="Map/StairsChange" method="_on_transitioning_stairs_body_exited"]
