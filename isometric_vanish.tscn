@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=4 uid="uid://m3vka8fmyphy"]
+[gd_scene load_steps=49 format=4 uid="uid://m3vka8fmyphy"]
 
 [ext_resource type="Texture2D" uid="uid://b12venbjkws3j" path="res://assets/assets_pixel_50x50/isometric_pixel_0000.png" id="1_2gfw4"]
 [ext_resource type="Texture2D" uid="uid://cy27py8m2nt3x" path="res://assets/assets_pixel_50x50/isometric_pixel_0001.png" id="2_swtyp"]
 [ext_resource type="Script" uid="uid://bvnjr5ilrm0gp" path="res://floor_controller.gd" id="2_vhgvi"]
+[ext_resource type="Texture2D" uid="uid://x8vcnx0ulxbs" path="res://assets/assets_pixel_50x50/isometric_pixel_0002-export.png" id="5_7sn56"]
 [ext_resource type="Texture2D" uid="uid://eyrl3epnpg3y" path="res://assets/assets_pixel_50x50/isometric_pixel_0002.png" id="6_7sn56"]
 [ext_resource type="Script" uid="uid://e8mru8r1u5oy" path="res://stairs_change.gd" id="6_ectm2"]
 [ext_resource type="PackedScene" uid="uid://cfcel1esgdpl2" path="res://player.tscn" id="6_ody8a"]
@@ -28,9 +29,21 @@ sources/0 = SubResource("TileSetAtlasSource_swtyp")
 a = Vector2(-20, -24)
 b = Vector2(44, 13)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_co6ke"]
+a = Vector2(96, 25)
+b = Vector2(139, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vfwd4"]
+a = Vector2(122, 10)
+b = Vector2(102, -2)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_pe12j"]
 a = Vector2(-20, -24)
 b = Vector2(-40, -13)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wukuw"]
+a = Vector2(44, 14)
+b = Vector2(39, -14)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_dy2ii"]
 a = Vector2(-81, -37)
@@ -52,12 +65,24 @@ b = Vector2(19, -24)
 a = Vector2(59, -1)
 b = Vector2(19, -24)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ectm2"]
+texture = ExtResource("6_7sn56")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -13)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_45x5b"]
 texture = ExtResource("2_swtyp")
 texture_region_size = Vector2i(50, 50)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -11)
 0:0/0/custom_data_0 = 2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vhgvi"]
+texture = ExtResource("5_7sn56")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -13)
 
 [sub_resource type="TileSet" id="TileSet_mosqk"]
 tile_shape = 1
@@ -67,22 +92,72 @@ tile_size = Vector2i(40, 24)
 custom_data_layer_0/name = "floor_number"
 custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_45x5b")
+sources/0 = SubResource("TileSetAtlasSource_ectm2")
+sources/2 = SubResource("TileSetAtlasSource_vhgvi")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ody8a"]
-a = Vector2(-20, -47)
+a = Vector2(1, -34)
 b = Vector2(39, -13)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_o0t4n"]
+a = Vector2(1, -34)
+b = Vector2(-20, -24)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mu222"]
+a = Vector2(-80, -60)
+b = Vector2(-20, -24)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_h7pax"]
+a = Vector2(-79, -62)
+b = Vector2(-20, -97)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_73pqp"]
+a = Vector2(0, -84)
+b = Vector2(-20, -97)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_novsf"]
+a = Vector2(0, -84)
+b = Vector2(-40, -61)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ycv3u"]
+a = Vector2(-19, -48)
+b = Vector2(-40, -61)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_icqfb"]
 a = Vector2(44, 13)
-b = Vector2(39, -13)
+b = Vector2(38, -14)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cr218"]
+a = Vector2(76, 14)
+b = Vector2(81, -12)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3oi6v"]
+a = Vector2(95, 24)
+b = Vector2(101, -1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_u7e24"]
+a = Vector2(101, -1)
+b = Vector2(139, -23)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rn8pq"]
+a = Vector2(81, -13)
+b = Vector2(119, -36)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_o5dpe"]
-a = Vector2(48, 11)
+a = Vector2(47, 13)
 b = Vector2(42, -15)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_ectm2"]
 a = Vector2(40, -60)
 b = Vector2(22, -49)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_adtwd"]
+a = Vector2(40, -60)
+b = Vector2(19, -72)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_madtm"]
+a = Vector2(-20, -48)
+b = Vector2(19, -72)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_7sn56"]
 a = Vector2(59, -24)
@@ -117,18 +192,13 @@ tile_offset_axis = 1
 tile_size = Vector2i(40, 24)
 sources/1 = SubResource("TileSetAtlasSource_hdwla")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vhgvi"]
-texture = ExtResource("6_7sn56")
-texture_region_size = Vector2i(50, 50)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -13)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ayrq3"]
+a = Vector2(13, 11)
+b = Vector2(34, 24)
 
-[sub_resource type="TileSet" id="TileSet_pe12j"]
-tile_shape = 1
-tile_layout = 5
-tile_offset_axis = 1
-tile_size = Vector2i(40, 24)
-sources/0 = SubResource("TileSetAtlasSource_vhgvi")
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vk4ld"]
+a = Vector2(3, -1)
+b = Vector2(-19, 12)
 
 [node name="IsometricVanish" type="Node2D"]
 y_sort_enabled = true
@@ -166,8 +236,18 @@ polygon = PackedVector2Array(99, -1, 118, -12, 99, -25, 120, -37, 180, 0, 161, 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
 shape = SubResource("SegmentShape2D_vhgvi")
 
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
+shape = SubResource("SegmentShape2D_co6ke")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
+position = Vector2(38, 2)
+shape = SubResource("SegmentShape2D_vfwd4")
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
 shape = SubResource("SegmentShape2D_pe12j")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
+shape = SubResource("SegmentShape2D_wukuw")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/Floors/Floor1/Floor1Collisions"]
 shape = SubResource("SegmentShape2D_dy2ii")
@@ -188,14 +268,14 @@ shape = SubResource("SegmentShape2D_p52rg")
 z_index = 1
 y_sort_enabled = true
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD8//3/AQAAAAAAAAD7////AQAAAAAAAAD+//7/AQAAAAAAAAD9//7/AQAAAAAAAAD9//3/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD7//7/AQAAAAAAAAD7//3/AQAAAAAAAAAAAPv/AQAAAAAAAAABAPz/AQAAAAAAAAABAPv/AQAAAAAAAAACAPv/AQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8//3/AQAAAAAAAAD7////AQAAAAAAAAD+//7/AQAAAAAAAAD9//7/AQAAAAAAAAD9//3/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD7//7/AQAAAAAAAAD7//3/AQAAAAAAAAAAAPv/AQAAAAAAAAABAPz/AQAAAAAAAAABAPv/AQAAAAAAAAACAPv/AQAAAAAAAAD///7/AAAAAAAAAAABAP3/AgAAAAAAAAD9////AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_mosqk")
 
 [node name="VisibilityArea" type="Area2D" parent="Map/Floors/Floor2"]
 collision_layer = 128
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/Floors/Floor2/VisibilityArea"]
-polygon = PackedVector2Array(-40, -38, -79, -60, -20, -96, 40, -61, 22, -49, 40, -37, 21, -24, -20, -47)
+polygon = PackedVector2Array(-19, -24, -79, -60, -20, -96, 40, -61, 22, -49, 59, -24, 39, -14, -1, -34)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Map/Floors/Floor2/VisibilityArea"]
 polygon = PackedVector2Array(98, -48, 121, -61, 180, -25, 160, -12, 139, -24, 120, -12, 100, -24, 119, -36)
@@ -208,8 +288,38 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
 shape = SubResource("SegmentShape2D_ody8a")
 
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_o0t4n")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_mu222")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_h7pax")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_73pqp")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_novsf")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_ycv3u")
+
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
 shape = SubResource("SegmentShape2D_icqfb")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_cr218")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_3oi6v")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_u7e24")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_rn8pq")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
 position = Vector2(17, -9)
@@ -218,11 +328,16 @@ shape = SubResource("SegmentShape2D_o5dpe")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
 shape = SubResource("SegmentShape2D_ectm2")
 
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_adtwd")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
+shape = SubResource("SegmentShape2D_madtm")
+
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/Floors/Floor2/Floor2Collisions"]
 shape = SubResource("SegmentShape2D_7sn56")
 
 [node name="Floor3" type="TileMapLayer" parent="Map/Floors" groups=["Floor"]]
-visible = false
 z_index = 2
 y_sort_enabled = true
 texture_filter = 1
@@ -242,7 +357,6 @@ build_mode = 1
 polygon = PackedVector2Array(-40, -84, -20, -73, 20, -96, 40, -86, 80, -109, 41, -134)
 
 [node name="Floor4" type="TileMapLayer" parent="Map/Floors" groups=["Floor"]]
-visible = false
 z_index = 2
 y_sort_enabled = true
 texture_filter = 1
@@ -262,28 +376,25 @@ build_mode = 1
 polygon = PackedVector2Array(-120, -10, -1, -85, -41, -107, -160, -35)
 
 [node name="StairsChange" type="Node2D" parent="Map"]
-visible = false
 z_index = 1
 script = ExtResource("6_ectm2")
 
-[node name="UpFloor" type="Area2D" parent="Map/StairsChange"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/StairsChange/UpFloor"]
-polygon = PackedVector2Array(21, -24, 39, -12, 60, -25, 40, -37)
-
 [node name="TransitioningStairs" type="Area2D" parent="Map/StairsChange"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Map/StairsChange/TransitioningStairs"]
-polygon = PackedVector2Array(45, 13, 39, -13, 58, -24, 65, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/StairsChange/TransitioningStairs"]
+position = Vector2(62, 1)
+shape = SubResource("SegmentShape2D_ayrq3")
 
-[node name="StairsLayer" type="TileMapLayer" parent="Map/StairsChange"]
-texture_filter = 1
-tile_map_data = PackedByteArray("AAD///7/AAAAAAAAAAA=")
-tile_set = SubResource("TileSet_pe12j")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Map/StairsChange/TransitioningStairs"]
+position = Vector2(62, 1)
+shape = SubResource("SegmentShape2D_ayrq3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Map/StairsChange/TransitioningStairs"]
+position = Vector2(62, 1)
+shape = SubResource("SegmentShape2D_vk4ld")
 
 [node name="Player" parent="Map" instance=ExtResource("6_ody8a")]
 position = Vector2(5, 21)
 
-[connection signal="body_entered" from="Map/StairsChange/UpFloor" to="Map/StairsChange" method="_on_up_floor_body_entered"]
 [connection signal="body_entered" from="Map/StairsChange/TransitioningStairs" to="Map/StairsChange" method="_on_transitioning_stairs_body_entered"]
 [connection signal="body_exited" from="Map/StairsChange/TransitioningStairs" to="Map/StairsChange" method="_on_transitioning_stairs_body_exited"]
