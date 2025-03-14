@@ -235,8 +235,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"down_left"
-frame_progress = 0.622993
+animation = &"up_right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.75, 3.75)

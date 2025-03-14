@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://gkc1jn4y83yc"]
+[gd_scene load_steps=16 format=3 uid="uid://gkc1jn4y83yc"]
 
 [ext_resource type="MeshLibrary" uid="uid://dlugtpmpgvp1j" path="res://3d/tiles.tres" id="1_varok"]
 [ext_resource type="Script" uid="uid://ck77vep6nuflj" path="res://3d/character_body_3d.gd" id="2_cbggl"]
+[ext_resource type="Texture2D" uid="uid://nfs2gpi2idhp" path="res://assets/Small-8-Direction-Characters_by_AxulArt/Small-8-Direction-Characters_by_AxulArt.png" id="3_cvrcd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_varok"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -234,11 +235,38 @@ size = Vector2(100, 100)
 subdivide_width = 100
 subdivide_depth = 100
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_cbggl"]
-radius = 0.001
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cvrcd"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_cbggl"]
-radius = 1.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix7nv"]
+atlas = ExtResource("3_cvrcd")
+region = Rect2(0, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebhrb"]
+atlas = ExtResource("3_cvrcd")
+region = Rect2(0, 48, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6w6i2"]
+atlas = ExtResource("3_cvrcd")
+region = Rect2(0, 72, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0v4ab"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix7nv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebhrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6w6i2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mob8e"]
 
 [node name="Isometric3D" type="Node3D"]
 
@@ -264,18 +292,30 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.143501, 0.717865, -0.681232, 0, 0.688356, 0.725373, 0.98965, 0.104092, -0.0987797, -25.364, 27.8111, -2.43015)
-projection = 1
-size = 15.0
+[node name="StaticBody3D" type="StaticBody3D" parent="GridMap"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2192, 3.68263, -1.84883)
+shape = SubResource("WorldBoundaryShape3D_cvrcd")
+debug_color = Color(1, 0.0823529, 0.345098, 0.890196)
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4.87668, -0.0424506, 1.10283, 0, 4.9963, 0.192319, -1.10365, -0.187575, 4.87307, -8.03195, 11.2036, 4.89102)
+sprite_frames = SubResource("SpriteFrames_0v4ab")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(-0.748961, 0.232547, -0.620468, 0, 0.936393, 0.350953, 0.662615, 0.26285, -0.701321, -17.5405, 19.2653, -11.7074)
+transform = Transform3D(-0.989011, -0.0283254, -0.145104, 0, 0.981475, -0.191591, 0.147843, -0.189486, -0.970689, -9.36742, 11.2364, -4.92383)
 script = ExtResource("2_cbggl")
 
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(0.8434, -0.39105, 0.368451, -0.102939, 0.555451, 0.825153, -0.527332, -0.733862, 0.428213, 2.05902, 4.02419, 1.62082)
+size = 15.0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("SphereShape3D_cbggl")
+transform = Transform3D(-1.655, 0, 0, 0, -1.655, 0, 0, 0, -1.655, 0, 0, 0)
+shape = SubResource("SphereShape3D_mob8e")
 debug_color = Color(0, 0.6, 0.701961, 0.666667)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("SphereMesh_cbggl")
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D"]
+transform = Transform3D(5, 2.98023e-07, -5.77316e-14, -2.98023e-07, 5, -7.45058e-08, 5.32907e-14, 7.45058e-08, 5, 0, 0, 0)
+sprite_frames = SubResource("SpriteFrames_0v4ab")
