@@ -1,45 +1,28 @@
- +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+
- |D|e|v|i|l|'|s| |W|o|r|k|.|s|h|o|p|
- +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-https://devilsworkshop.itch.io/big-pixel-isometric-block-pack-free-2d-sprites
+	
 
-The Devil's Work.shop 2D Pixel Art - Isometric Blocks - Free Sprites - is a large collection of Isometric Block Pack contains around 700  free game assets. Images are exported at high resolution and low resolution.
+	Platformer Kit (3.0)
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	Created/distributed by Kenney (www.kenney.nl)
+	Creation date: 15-05-2024 08:53
+	
+			------------------------------
 
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
 
-License
-Things you can do - 
+	You can use this content for personal, educational, and commercial purposes.
 
-This license grants you, the purchaser, an ongoing, non-exclusive commercial, worldwide license to make use of the item (game asset) you have selected to make games, or interactive content. You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. The project assets are as is and makes no warranties about the work, and disclaims liability for all uses of the work, to the fullest extent permitted by applicable law.
-Credits to the author is always appreciate, but not a necessity. 
+	Support by crediting 'Kenney' or 'www.kenney.nl' (this is not a requirement)
 
-Credits 
-Ajay Karat | Devil's Work.shop
-http://devilswork.shop/ 
+			------------------------------
 
+	• Website : www.kenney.nl
+	• Donate  : www.kenney.nl/donate
 
+	• Patreon : patreon.com/kenney
+	
+	Follow on social media for updates:
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-If you like this Game Asset Pack, please consider taking a moment to rate/review it. Your continued support helps The Devil's Work.shop bring new improvements to the pack!
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-Support - 
-
-Devil's Work.shop
-help@devilswork.shop
-http://devilswork.shop/
-http://twitter.com/devilswork_shop 
+	• Twitter:   twitter.com/KenneyNL
+	• Instagram: instagram.com/kenney_nl
+	• Mastodon:  mastodon.gamedev.place/@kenney
